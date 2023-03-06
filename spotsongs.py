@@ -28,13 +28,13 @@ while True:
 log_file_path = os.path.join(folder_path, 'playlist.log')
 if os.path.exists(log_file_path):
     os.remove(log_file_path) # Remove previous log file
-log_file = open(log_file_path, 'w')
+log_file = open(log_file_path, 'w' encoding='utf-8')
 
 # Set up Spotify API authentication and create new playlist
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret,
                                                redirect_uri=redirect_uri, scope=scope))
 playlist_name = os.path.basename(folder_path) # Use folder name as playlist name
-playlist = sp.user_playlist_create(user=sp.current_user()['id'], name=playlist_name, public=False)
+playlist = sp.user_playlist_create(user=sp.current_user()['id'], name=playlist_name, public=True)
 
 # Loop through files in folder and add songs to playlist
 for filename in os.listdir(folder_path):
