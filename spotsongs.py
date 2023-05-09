@@ -28,7 +28,7 @@ while True:
 log_file_path = os.path.join(folder_path, 'playlist.log')
 if os.path.exists(log_file_path):
     os.remove(log_file_path) # Remove previous log file
-log_file = open(log_file_path, 'w' encoding='utf-8')
+log_file = open(log_file_path, 'w', encoding='utf-8')
 
 # Set up Spotify API authentication and create new playlist
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret,
